@@ -1,3 +1,12 @@
 import React from 'react';
 
 import GiphysIndexItem from './giphys_index_item';
+
+const GiphysIndex = ({ giphys }) =>
+  <ul>
+    {giphys.map((giphy, idx) => {
+      return <GiphysIndexItem giphy={giphy} key={idx} />
+    })}
+  </ul>
+
+export default GiphysIndex;

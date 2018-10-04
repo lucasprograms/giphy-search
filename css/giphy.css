@@ -26,12 +26,14 @@ input {
   font-size: 15px;
   font-family: 'Helvetica';
   margin-right: 2px;
-  padding: 0;
+  padding: 5px 10px;
   border: 1px solid lightgray;
 }
 
 button {
   padding: 6px;
-  border: none;
-  font-size: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 3px;
+  border: 3px solid #3380FF;
 }
