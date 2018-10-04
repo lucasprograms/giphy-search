@@ -11984,6 +11984,12 @@ var _root = __webpack_require__(102);
 
 var _root2 = _interopRequireDefault(_root);
 
+var _api_util = __webpack_require__(112);
+
+var APIUtil = _interopRequireWildcard(_api_util);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
@@ -11993,7 +11999,27 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _giphy_actions = __webpack_require__(56);
+
+var initialState = { giphys: [] };
+
+var giphysReducer = function giphysReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
+  switch (action.type) {
+    case _giphy_actions.RECEIVE_SEARCH_GIPHYS:
+      return { giphys: action.giphys };
+    default:
+      return state;
+  }
+};
+
+exports.default = giphysReducer;
 
 /***/ }),
 /* 111 */
@@ -12001,6 +12027,10 @@ var _giphy_actions = __webpack_require__(56);
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _redux = __webpack_require__(55);
 
@@ -12010,12 +12040,25 @@ var _giphys_reducer2 = _interopRequireDefault(_giphys_reducer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var rootReducer = (0, _redux.combineReducers)({
+  giphys: _giphys_reducer2.default
+});
+
+exports.default = rootReducer;
+
 /***/ }),
 /* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var fetchSearchGiphys = exports.fetchSearchGiphys = function fetchSearchGiphys(searchTerm) {
+  return $.get("http://api.giphy.com/v1/gifs/search?q=" + searchTerm + "&api_key=dc6zaTOxFJmzC&limit=2");
+};
 
 /***/ }),
 /* 113 */
